@@ -1,4 +1,4 @@
-# TtitleCaseGenerator
+# Ttitle Case Generator
 
 ### How to Use the Web Application
 
