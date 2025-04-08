@@ -21,28 +21,38 @@ const titleCase = (title) => {
     'to',
     'up',
     'yet',
+    'if',
+    'addition',
+    'will',
+    'be',
   ];
+
   const words = title
     .replace(/[.,#!$%\^&\*;:\\{}=_`~]/g, '')
     .replace(/\s+/g, ' ')
-    .toLowerCase()
+    .replace(/req/gi, 'REQ')
     .split(' ');
 
-  const results = words.map((word) => {
+  const results = words.map((word, i) => {
     const isFirstLetterSymble = /^[^a-zA-Z]/.test(word);
 
     if (isFirstLetterSymble) {
       const symble = word[0];
-      return !lowercaseWords.includes(word.slice(1)) &&
+      return !lowercaseWords.includes(word.slice(1).toLowerCase()) &&
         /^[a-zA-z]/.test(word.slice(1))
+        ? symble + word[1].toUpperCase() + word.slice(2)
+        : i === 0
         ? symble + word[1].toUpperCase() + word.slice(2)
         : word;
     }
-
-    return !lowercaseWords.includes(word) && /^[a-zA-z]/.test(word)
+    return !lowercaseWords.includes(word.toLowerCase()) &&
+      /^[a-zA-z]/.test(word)
       ? word[0].toUpperCase() + word.slice(1)
-      : word;
+      : i === 0
+      ? word[0].toUpperCase() + word.slice(1)
+      : word.toLowerCase();
   });
+
   return results.join(' ');
 };
 
@@ -59,4 +69,11 @@ document.querySelector('#clearButton').addEventListener('click', (event) => {
   event.preventDefault();
   document.querySelector('.input__text').value = '';
   document.querySelector('.input__res').value = '';
+});
+
+// Handler for COPYTOCLIPBOARD button
+document.querySelector('#CopyButton').addEventListener('click', (event) => {
+  event.preventDefault();
+  const text = document.querySelector('.input__res').value;
+  navigator.clipboard.writeText(text);
 });
