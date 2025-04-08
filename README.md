@@ -1,5 +1,3 @@
-# Ttitle Case Generator
-
 ### How to Use the Web Application
 
 1. **Launching the Application**:
@@ -12,10 +10,10 @@
 
 
 3. **Character Filtering**:
-   - The application will remove any characters that are not letters, except for regular parentheses `()`, square brackets `[]`, hyphens `-`, and doublequeute `""`.
+   - The application will remove any characters that are not letters, except for regular parentheses `()`, square brackets `[]`, and hyphens `-`.
 
 4. **Buttons**:
    - After entering your string, you will see two buttons:
      - **Create Title Case**: This button will convert the entered string to Title Case.
      - **Clear**: This button will clear both the input field and the output field.
-
+	 - **Copy To Clipboard**: This button will copy text from the input field to clipboard.	
