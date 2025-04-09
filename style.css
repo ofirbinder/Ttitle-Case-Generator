@@ -99,14 +99,33 @@ button::after {
   transition: top 0.2s ease, left 0.2s ease;
 }
 
+.BtnCPY::before {
+  position: absolute;
+  content: 'Copied';
+  background-color: #ffeb79;
+  padding: 0.6rem;
+  border-radius: 1rem;
+  z-index: 100;
+  top: -45px;
+  right: -15px;
+  transition: top 0.2s ease, left 0.2s ease;
+  display: none;
+  transition: 0.3s all;
+}
+
+.BtnCPY.show::before {
+  display: block;
+}
+
 button:hover::after {
   top: 0;
   left: 0;
   transform: rotate(0deg);
+  background-color: #ffeb79;
 }
 
 .box-btns {
-  margin-top: 3rem;
+  margin-top: 5rem;
   display: flex;
   align-items: center;
   justify-content: center;
