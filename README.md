@@ -10,7 +10,7 @@
 
 
 3. **Character Filtering**:
-   - The application will remove any characters that are not letters, except for regular parentheses `()`, square brackets `[]`,double and single quotes `" '` and hyphens `-`.
+   - The application will remove any characters that are not letters, except for regular parentheses `()`, square brackets `[]`,dot `.`,slashes `\ /`, double and single quotes `" '` and hyphens `-`.
 
 4. **Buttons**:
    - After entering your string, you will see two buttons:
