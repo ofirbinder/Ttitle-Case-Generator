@@ -61,16 +61,16 @@ const titleCase = (title) => {
   ];
 
   const words = title
-    .replace(/[.,#!$%\^&\*;:\\{}=_`~]/g, '')
+    .replace(/[,#$%\^;:{}`~.]/g, '')
     .replace(/\s+/g, ' ')
-    .replace(/req/gi, 'REQ')
+    .replace(/\breq\b/gi, 'REQ')
     .split(' ');
 
   const results = words.map((word, i) => {
     const isFirstLetterSymble = /^[^a-zA-Z]/.test(word);
 
     if (isFirstLetterSymble) {
-      const symble = word[0];
+      const symble = i === 0 ? '' : word[0];
       return !lowercaseWords.includes(word.slice(1).toLowerCase()) &&
         /^[a-zA-z]/.test(word.slice(1))
         ? symble + word[1].toUpperCase() + word.slice(2)
@@ -104,9 +104,25 @@ document.querySelector('#clearButton').addEventListener('click', (event) => {
   document.querySelector('.input__res').value = '';
 });
 
+// // Handler for COPYTOCLIPBOARD button
+// document.querySelector('#CopyButton').addEventListener('click', (event) => {
+//   event.preventDefault();
+//   const text = document.querySelector('.input__res').value;
+//   navigator.clipboard.writeText(text);
+// });
+
 // Handler for COPYTOCLIPBOARD button
 document.querySelector('#CopyButton').addEventListener('click', (event) => {
   event.preventDefault();
   const text = document.querySelector('.input__res').value;
   navigator.clipboard.writeText(text);
+
+  // Show the 'Copied' message
+  const copyButton = document.querySelector('.BtnCPY');
+  copyButton.classList.add('show');
+
+  // Hide the 'Copied' message after 3 seconds
+  setTimeout(() => {
+    copyButton.classList.remove('show');
+  }, 1000);
 });
