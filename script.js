@@ -61,8 +61,9 @@ const titleCase = (title) => {
   ];
 
   const words = title
-    .replace(/[,#$%\^;:{}`~.]/g, '')
+    .replace(/[,#$%\^;{}`~]/g, '')
     .replace(/\s+/g, ' ')
+    .replace(/.$/g, '')
     .replace(/\breq\b/gi, 'REQ')
     .split(' ');
 
@@ -103,13 +104,6 @@ document.querySelector('#clearButton').addEventListener('click', (event) => {
   document.querySelector('.input__text').value = '';
   document.querySelector('.input__res').value = '';
 });
-
-// // Handler for COPYTOCLIPBOARD button
-// document.querySelector('#CopyButton').addEventListener('click', (event) => {
-//   event.preventDefault();
-//   const text = document.querySelector('.input__res').value;
-//   navigator.clipboard.writeText(text);
-// });
 
 // Handler for COPYTOCLIPBOARD button
 document.querySelector('#CopyButton').addEventListener('click', (event) => {
