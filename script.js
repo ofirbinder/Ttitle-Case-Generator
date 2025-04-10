@@ -124,5 +124,5 @@ document.querySelector('#CopyButton').addEventListener('click', (event) => {
   // Hide the 'Copied' message after 3 seconds
   setTimeout(() => {
     copyButton.classList.remove('show');
-  }, 1000);
+  }, 750);
 });
