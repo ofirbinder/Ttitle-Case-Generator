@@ -63,7 +63,7 @@ const titleCase = (title) => {
   const words = title
     .replace(/[,#$%\^;{}`~]/g, '')
     .replace(/\s+/g, ' ')
-    .replace(/.$/g, '')
+    .replace(/\.$/g, '')
     .replace(/\breq\b/gi, 'REQ')
     .split(' ');
 
