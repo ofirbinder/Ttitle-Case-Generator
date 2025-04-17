@@ -70,17 +70,18 @@ const titleCase = (title) => {
     .split(' ');
 
   const results = words.map((word, i) => {
+    console.log(word);
     const isFirstLetterSymble = /^[^a-zA-Z]/.test(word);
     word = isFirstLetterSymble && i === 0 ? word.slice(1) : word;
     if (i === 0 && lowercaseWords.includes(word.toLowerCase()))
       return word[0].toUpperCase() + word.slice(1);
 
-    if (isFirstLetterSymble) {
+    if (isFirstLetterSymble && /^[a-zA-Z]/.test(word.slice(1))) {
       const symble = word[0];
 
       return lowercaseWords.includes(word.slice(1).toLowerCase())
         ? symble + word.slice(1).toLowerCase()
-        : symble + word.slice(1);
+        : symble + word[1].toUpperCase() + word.slice(2);
     }
 
     return lowercaseWords.includes(word.toLowerCase())
