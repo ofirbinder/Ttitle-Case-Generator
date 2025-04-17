@@ -24,6 +24,7 @@ const titleCase = (title) => {
     'if',
     'addition',
     'will',
+    'shall',
     'be',
     'although',
     'because',
@@ -56,6 +57,7 @@ const titleCase = (title) => {
     'where',
     'wherever',
     'while',
+    'with',
     'whether',
     'yet',
   ];
@@ -69,22 +71,21 @@ const titleCase = (title) => {
 
   const results = words.map((word, i) => {
     const isFirstLetterSymble = /^[^a-zA-Z]/.test(word);
+    word = isFirstLetterSymble && i === 0 ? word.slice(1) : word;
+    if (i === 0 && lowercaseWords.includes(word.toLowerCase()))
+      return word[0].toUpperCase() + word.slice(1);
 
     if (isFirstLetterSymble) {
-      const symble = i === 0 ? '' : word[0];
-      return !lowercaseWords.includes(word.slice(1).toLowerCase()) &&
-        /^[a-zA-z]/.test(word.slice(1))
-        ? symble + word[1].toUpperCase() + word.slice(2)
-        : i === 0
-        ? symble + word[1].toUpperCase() + word.slice(2)
-        : word;
+      const symble = word[0];
+
+      return lowercaseWords.includes(word.slice(1).toLowerCase())
+        ? symble + word.slice(1).toLowerCase()
+        : symble + word.slice(1);
     }
-    return !lowercaseWords.includes(word.toLowerCase()) &&
-      /^[a-zA-z]/.test(word)
-      ? word[0].toUpperCase() + word.slice(1)
-      : i === 0
-      ? word[0].toUpperCase() + word.slice(1)
-      : word.toLowerCase();
+
+    return lowercaseWords.includes(word.toLowerCase())
+      ? word.toLowerCase()
+      : word[0].toUpperCase() + word.slice(1);
   });
 
   return results.join(' ');
@@ -93,8 +94,10 @@ const titleCase = (title) => {
 // Handler for RUN button
 document.querySelector('#runButton').addEventListener('click', (event) => {
   event.preventDefault();
-  const titleInput = document.querySelector('.input__text');
-  const result = titleCase(titleInput.value);
+  const titleInput = document.querySelector('.input__text').value;
+
+  if (!titleInput) return;
+  const result = titleCase(titleInput);
   document.querySelector('.input__res').value = result;
 });
 
@@ -108,8 +111,10 @@ document.querySelector('#clearButton').addEventListener('click', (event) => {
 // Handler for COPYTOCLIPBOARD button
 document.querySelector('#CopyButton').addEventListener('click', (event) => {
   event.preventDefault();
-  const text = document.querySelector('.input__res').value;
-  navigator.clipboard.writeText(text);
+  const titleInput = document.querySelector('.input__res').value;
+
+  if (!titleInput) return;
+  navigator.clipboard.writeText(titleInput);
 
   // Show the 'Copied' message
   const copyButton = document.querySelector('.BtnCPY');
