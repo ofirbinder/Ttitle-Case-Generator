@@ -132,6 +132,10 @@ button:hover::after {
   left: 0;
 }
 
+button:active::after {
+  background-color: #ffec82;
+}
+
 .box-btns {
   margin-top: 5rem;
   display: flex;
