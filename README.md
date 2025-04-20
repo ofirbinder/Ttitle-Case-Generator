@@ -10,7 +10,7 @@
 
 
 3. **Character Filtering**:
-   - The application will remove any characters that are not letters - `, # $ % ^ ; `` ~`.
+   - The application will remove any characters that are not letters - `, # $  ^  `` ~`.
 
 4. **Buttons**:
    - After entering your string, you will see two buttons:
