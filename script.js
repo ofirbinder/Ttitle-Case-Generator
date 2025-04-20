@@ -63,7 +63,7 @@ const titleCase = (title) => {
   ];
 
   const words = title
-    .replace(/[,#$%\^;{}`~]/g, '')
+    .replace(/[,#$\^{}`~]/g, '')
     .replace(/\s+/g, ' ')
     .replace(/\.$/g, '')
     .replace(/\breq\b/gi, 'REQ')
@@ -124,5 +124,5 @@ document.querySelector('#CopyButton').addEventListener('click', (event) => {
   // Hide the 'Copied' message after 3 seconds
   setTimeout(() => {
     copyButton.classList.remove('show');
-  }, 750);
+  }, 2000);
 });
