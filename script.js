@@ -67,11 +67,11 @@ const titleCase = (title) => {
     .replace(/\s+/g, ' ')
     .replace(/\.$/g, '')
     .replace(/\breq\b/gi, 'REQ')
+    .trim()
     .split(' ');
 
   const results = words.map((word, i) => {
-    console.log(word);
-    const isFirstLetterSymble = /^[^a-zA-Z]/.test(word);
+    let isFirstLetterSymble = /^[^a-zA-Z]/.test(word);
     word = isFirstLetterSymble && i === 0 ? word.slice(1) : word;
     if (i === 0 && lowercaseWords.includes(word.toLowerCase()))
       return word[0].toUpperCase() + word.slice(1);
